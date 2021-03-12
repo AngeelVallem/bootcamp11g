@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box !important;
+}
+
+
+body{
+font-size: 15px;
+}
+
+.border-{
+
+    &red{
+        border-color: hsl(0, 78%, 62%);
+    }
+
+    &cyan{
+        border-color: hsl(180, 62%, 55%);
+    }
+    &orange{
+        border-color: hsl(34, 97%, 64%) ;
+    }
+    &blue{
+       border-color:  hsl(212, 86%, 64%);
+    }
+}
+
+.bordertop{
+    border-style: solid;
+    border: 2px 0 0 0;
+}
+
+.card{
+    border-radius: 15px !important;
+    overflow: hidden;
+}
+
+.card-body{
+    border-radius: 10px !important;
+}
+
+.justify-content-evenly{
+    justify-content: space-evenly;
+}
+
+.h-card{
+    height: 50%;
+}
+
+
+
+// ### Neutral
+
+// - Very Dark Blue: hsl(234, 12%, 34%)
+// - Grayish Blue: hsl(229, 6%, 66%)
+// - Very Light Gray: hsl(0, 0%, 98%)

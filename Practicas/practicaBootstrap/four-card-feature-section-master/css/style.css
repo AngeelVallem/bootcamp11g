@@ -1,0 +1,49 @@
+* {
+  -webkit-box-sizing: border-box !important;
+          box-sizing: border-box !important;
+}
+
+body {
+  font-size: 15px;
+}
+
+.border-red {
+  border-color: #ea5353;
+}
+
+.border-cyan {
+  border-color: #45d3d3;
+}
+
+.border-orange {
+  border-color: #fcaf4a;
+}
+
+.border-blue {
+  border-color: #549ef2;
+}
+
+.bordertop {
+  border-style: solid;
+  border: 2px 0 0 0;
+}
+
+.card {
+  border-radius: 15px !important;
+  overflow: hidden;
+}
+
+.card-body {
+  border-radius: 10px !important;
+}
+
+.justify-content-evenly {
+  -webkit-box-pack: space-evenly;
+      -ms-flex-pack: space-evenly;
+          justify-content: space-evenly;
+}
+
+.h-card {
+  height: 50%;
+}
+/*# sourceMappingURL=style.css.map */
