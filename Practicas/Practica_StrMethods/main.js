@@ -12,7 +12,7 @@
 let phrase = 'la mejor forma de predecir el futuro es creándolo';
 
 // SNAKE_CASE
-console.log();
+console.log(phrase.replace(/ /g,"_"));
 
 // KEBAB-CASE
 console.log(phrase.replace(/ /g,'-'));
