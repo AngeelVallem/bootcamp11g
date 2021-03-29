@@ -13,6 +13,7 @@ function addKoders(koders) {
   }
   console.log(koders);
 }
+ 
 
 // delete random koders in koders array
 
