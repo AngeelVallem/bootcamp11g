@@ -1,5 +1,5 @@
 
-    /*Descomentar un los consoles.log para ver los resultados*/
+    /*Descomentar los consoles.log para ver los resultados*/
 
 let mentorsArray = [
   {
