@@ -710,20 +710,16 @@ var contriesArray = [
 */
 
 // -Crear una función que me permita agrupar los países en la lista con base en su continente ( region )
-const getContriesByRegion = (region) =>
-  contriesArray.filter((el) => el.region === region);
+const getContriesByRegion = (region) =>contriesArray.filter((el) => el.region === region);
 console.log(getContriesByRegion("Americas"));
 
 // -Obtener el total de población de los países enlistados
-const totalPopulation = () =>
-  contriesArray.reduce((acc, cur) => acc + cur.population, 0);
+const totalPopulation = () =>contriesArray.reduce((acc, cur) => acc + cur.population, 0);
 console.log(totalPopulation());
 
 // -Crear una fución que permita conocer el porcentaje de población de cada país vs la población total obtenida en el paso anterior
-const contryPopulationVsTotal = (contry) =>
-  (contryPopulation = contriesArray.find((el) => el.name === contry)
-    .population);
-console.log(`${contryPopulationVsTotal("Mexico")} vs ${totalPopulation()}`);
+const contryPopulationVsTotal = (contry) =>`${(contriesArray.find((el) => el.name === contry).population)} vs ${totalPopulation()}` ;
+console.log(contryPopulationVsTotal("Mexico"));
 
 // -Crear una función que reciba algún alpha2Code , y me entregue un string con el nombre del país( en español ), población total, y área, en caso de que el país no se encuentre en la lista, devolver un mensaje que lo indique.
 const getStringbyAlpha2Code = (alpha2Code) =>
