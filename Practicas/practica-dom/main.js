@@ -113,19 +113,22 @@ const printMentorsTable = () => {
 
     table.appendChild(mentorRow);
 
+    let avg = 0;
+
     el.scores.reduce((acc, cur) => {
       let scoreTd = document.createElement("td");
       let scoreText = document.createTextNode(cur.score);
 
       mentorRow.appendChild(scoreTd);
       scoreTd.appendChild(scoreText);
+
+      avg = acc + cur.score / el.scores.length;
+
+      return avg;
     }, 0);
 
-    let avgScores =
-      el.scores.reduce((acc, cur) => acc + cur.score, 0) / el.scores.length;
-
     let td = document.createElement("td");
-    let txt = document.createTextNode(avgScores);
+    let txt = document.createTextNode(avg);
 
     mentorRow.appendChild(td);
     td.appendChild(txt);
