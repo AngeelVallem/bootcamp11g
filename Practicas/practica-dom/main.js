@@ -85,10 +85,12 @@ let mentorsArray = [
   },
 ];
 
-let arrayTitles = ["Mentors", "HTML", "CSS", "JS", "ReactJS", "PROMEDIO"];
+let arrayTitles = ["Mentors", "HTML", "CSS", "JS", "ReactJS", "PROMEDIO", ""];
 
+let table = document.createElement("table");
 const printMentorsTable = () => {
-  let table = document.createElement("table");
+
+  table.className = "table-bordered";
 
   let titlesRow = document.createElement("tr");
 
@@ -122,6 +124,10 @@ const printMentorsTable = () => {
       mentorRow.appendChild(scoreTd);
       scoreTd.appendChild(scoreText);
 
+      cur.score < 9
+        ? (scoreTd.className = "bg-warning")
+        : (scoreTd.className = "bg-success");
+
       avg = acc + cur.score / el.scores.length;
 
       return avg;
@@ -132,9 +138,87 @@ const printMentorsTable = () => {
 
     mentorRow.appendChild(td);
     td.appendChild(txt);
+
+    let button = document.createElement("button");
+    let buttonTd = document.createElement("td");
+    let buttonTxt = document.createTextNode("X");
+
+    button.classList = "btn btn-danger";
+
+    button.appendChild(buttonTxt);
+    buttonTd.appendChild(button);
+    mentorRow.appendChild(buttonTd);
   });
 
   document.body.appendChild(table);
+  document.querySelectorAll("td button").forEach((button, i) => {
+    button.addEventListener("click", () => {
+      mentorsArray.splice(i, 1);
+
+       
+    while (table.lastElementChild) {
+      table.removeChild( table.lastElementChild );
+  }
+
+      printMentorsTable();
+    });
+  });
 };
 
 printMentorsTable();
+
+
+
+document.getElementById("save").addEventListener("click", () => {
+  let name = document.getElementById("name")
+let nameTxt = name.value
+
+let html = document.getElementById("html")
+let htmlTxt = html.value
+
+let css = document.getElementById("css")
+let cssTxt = css.value
+
+let js = document.getElementById("js")
+let jsTxt = js.value
+
+let react = document.getElementById("react")
+let reactTxt = react.value
+
+
+let o = {
+  name : nameTxt,
+  scores :  [
+    {
+      signature: "HTML",
+      score: htmlTxt,
+    },
+    {
+      signature: "CSS",
+      score: cssTxt,
+    },
+    {
+      signature: "JS",
+      score: jsTxt,
+    },
+    {
+      signature: "ReactJS",
+      score: reactTxt,
+    },
+  ]
+}
+  
+  mentorsArray.push(o)
+
+  while (table.lastElementChild) {
+    table.removeChild( table.lastElementChild );
+}
+
+    printMentorsTable();
+
+
+document.querySelectorAll("input").forEach(input => {
+  input.value = ""
+})
+
+})
