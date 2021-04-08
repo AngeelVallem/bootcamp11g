@@ -85,7 +85,14 @@ let mentorsArray = [
   },
 ];
 
-let arrayTitles = ["Mentors", "HTML", "CSS", "JS", "ReactJS", "PROMEDIO", ""];
+let arrayTitles = [
+  "Mentors",
+ "HTML",
+  "CSS", 
+  "JS", "ReactJS",
+   "PROMEDIO",
+    ""
+  ];
 
 let table = document.createElement("table");
 const printMentorsTable = () => {
@@ -222,3 +229,5 @@ document.querySelectorAll("input").forEach(input => {
 })
 
 })
+
+
