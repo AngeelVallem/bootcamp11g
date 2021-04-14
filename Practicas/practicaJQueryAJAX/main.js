@@ -2,6 +2,9 @@ let cardsRow = $("#cards-c");
 
 $("form").hide();
 
+
+$("#alert-deleted").alert('close')
+
 const setProduct = () => {
   let newMentor = {};
   $('form input[type="text"]').each(function () {
@@ -114,7 +117,8 @@ const deleteData = (event) => {
     },
     async: false,
   });
-
+  $("#modal-delete").modal("show");
+  $('#alert-deleted').alert()
   printMentors(getData());
 };
 
@@ -198,6 +202,9 @@ const showForm = () => {
 $("#show-form").click(showForm);
 
 $("#hide-form").click(() => {
-  $("form").hide();
+    $("form").hide();
   $("#show-form").show("slow");
+  $('form input[type="text"]').each(function () {
+    this.value = "";
+  });
 });
