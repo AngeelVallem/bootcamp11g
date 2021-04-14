@@ -2,7 +2,6 @@ let cardsRow = $("#cards-c");
 
 $("form").hide();
 
-
 $("#alert-deleted").alert('close')
 
 const setProduct = () => {
@@ -59,7 +58,7 @@ const saveEdit = (event) => {
 
   putData(key, editMentor);
   $("#modal-edit").modal("hide");
-
+  $("#modal-edited").modal("show");
   printMentors(getData());
 };
 
