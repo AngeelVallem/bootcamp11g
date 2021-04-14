@@ -1,0 +1,9 @@
+body{
+    position: relative;
+}
+
+.html-img{
+position: absolute; 
+right: 5%;
+opacity: 0.2; 
+}

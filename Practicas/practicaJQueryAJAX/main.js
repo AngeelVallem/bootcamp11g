@@ -1,165 +1,128 @@
-let cardsRow = $('#cards-c')
+let cardsRow = $("#cards-c");
 
-$('form').hide()
-
-
+$("form").hide();
 
 const setProduct = () => {
-let newMentor = {}
-$('form input[type="text"]').each(function(){
-        newMentor[this.name] = this.value
-    });
+  let newMentor = {};
+  $('form input[type="text"]').each(function () {
+    newMentor[this.name] = this.value;
+  });
 
-    saveData(newMentor)
-   
-    printMentors(getData())
+  saveData(newMentor);
 
-    $('form input[type="text"]').each(function(){
-        this.value = ""
-    });
+  printMentors(getData());
 
-    $('form').hide()
-    $('#show-form').show('slow')
+  $('form input[type="text"]').each(function () {
+    this.value = "";
+  });
 
-    $('#modal-save').modal('show')
-}
+  $("form").hide();
+  $("#show-form").show("slow");
 
-$('#save').click(() => setProduct())
- 
+  $("#modal-save").modal("show");
+};
+
+$("#save").click(() => setProduct());
+
 const getData = () => {
-    let mentorsCollections;
-    $.ajax({
-        method: "GET",
-        url: "https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors.json",
-        success: response => {
-            mentorsCollections = response
-            console.log(response);
-        },
-        error: error => {
-            console.log(error)
-        },
-        async: false,
-    })
-    return mentorsCollections
-}
+  let mentorsCollections;
+  $.ajax({
+    method: "GET",
+    url: "https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors.json",
+    success: (response) => {
+      mentorsCollections = response;
+      console.log(response);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+    async: false,
+  });
+  return mentorsCollections;
+};
 const getKey = (event) => {
-    let key = event.target.dataset.mentorKey
+  let key = event.target.dataset.mentorKey;
 
-    return mentorsCollections
-}
-
+  return mentorsCollections;
+};
 
 const saveEdit = (event) => {
+  let key = event.target.dataset.mentorKey;
 
-    let key = event.target.dataset.mentorKey
+  let editMentor = {};
+  $('.md-form input[type="text"]').each(function () {
+    editMentor[this.name] = this.value;
+  });
 
-    let editMentor = {}
-    $('.md-form input[type="text"]').each(function(){
-        editMentor[this.name] = this.value
-    })
+  putData(key, editMentor);
+  $("#modal-edit").modal("hide");
 
+  printMentors(getData());
+};
 
+const getDataByKey = (event) => {
+  let key = event.target.dataset.mentorKey;
+  let mentorObj;
+  $("#modal-edit").modal("show");
+  $.ajax({
+    method: "GET",
+    url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
+    success: (response) => {
+      console.log(response);
+      mentorObj = response;
+    },
+    error: (error) => {
+      console.log(error, "ERRRRRO");
+    },
+    async: false,
+  });
 
-        putData(key,editMentor)
-        $('#modal-edit').modal('hide')
+  let { name, age, phone } = mentorObj;
+  let editMentor = { key };
+  $('.md-form input[type="text"]').each(function () {
+    if (this.name == "name") {
+      this.value = name;
+    } else if (this.name == "age") {
+      this.value = age;
+    } else {
+      this.value = phone;
+    }
+  });
 
-        printMentors(getData())
+  let saveButton = $(".save-button");
 
+  saveButton.children().remove();
 
-}
+  let button = `<button  data-mentor-key=${key} class="btn btn-primary" id="save-edit">Save</button>`;
 
+  saveButton.append(button);
 
-const getDataByKey = event => {
-    let key = event.target.dataset.mentorKey
-    let mentorObj;
-    $('#modal-edit').modal('show')
-    $.ajax({
-        method: "GET",
-        url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
-        success: response => {
-            console.log(response);
-            mentorObj = response
-        },
-        error: error => {
-            console.log(error,"ERRRRRO")
-        },
-        async: false,
-    })
+  $("#save-edit").click(saveEdit);
 
+  return key;
+};
 
-    let {name,age,phone} = mentorObj;
-    let editMentor = {key}
-    $('.md-form input[type="text"]').each(function(){
-        if(this.name == "name"){
-            this.value = name
-        } else if (this.name == "age"){
-            this.value=age
-        }else{
-            this.value = phone
-        }
-    })
-        
+const deleteData = (event) => {
+  let key = event.target.dataset.mentorKey;
 
+  $.ajax({
+    method: "DELETE",
+    url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
+    success: (response) => response,
+    error: (error) => {
+      console.log(error);
+    },
+    async: false,
+  });
 
-   let saveButton = $('.save-button');
-
-   saveButton.children().remove()
-
-   let  button = `<button  data-mentor-key=${key} class="btn btn-primary" id="save-edit">Save</button>`
-
-
-    saveButton.append(button)
-    
-
-        $('#save-edit').click(saveEdit)
-
-    return key
-}
-
-
-
- 
-
-
-
-
-
-
-
-
-
-
-
-    const deleteData = event => {
-
-        let key = event.target.dataset.mentorKey;
-            
-            $.ajax({
-                method:"DELETE",
-                url:`https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
-                success: response => response,
-                error: error => {
-                    console.log( error)
-                },
-                async:false,
-            })
-        
-            printMentors(getData())
-                
-        }
-
-      
-
+  printMentors(getData());
+};
 
 const printMentors = (arr) => {
+  cardsRow.children().remove();
 
-    cardsRow.children().remove()
-
-
-
-for (key in arr) {
-
-    let {name,age,phone} = arr[key]
+  for (key in arr) {
+    let { name, age, phone } = arr[key];
 
     let card = `<div class="col-12 col-md-4 col-lg-3"><div class="card mb-4 shadow-sm">
     <div class="card-body">
@@ -169,107 +132,72 @@ for (key in arr) {
         <div class="card-text">${age}</div>
         <div class="card-text">${phone}</div>
         <button data-mentor-key="${key}" class="btn btn-outline-danger btn-delete mt-2">delete</button>
-    </div> </div>`
+    </div> </div>`;
 
-        cardsRow.append(card)
-        
-       
-           
-}
+    cardsRow.append(card);
+  }
 
-$('.btn-delete').click(deleteData)
+  $(".btn-delete").click(deleteData);
 
+  $(".btn-edit").click(getDataByKey);
 
- 
+  console.log();
+};
 
-
-
-$('.btn-edit').click(getDataByKey)
-
-console.log();
-
-
-}
-
-
-printMentors(getData())
-
-
-
-
-
-
-
+printMentors(getData());
 
 const saveData = (object) => {
-    $.ajax({
-        method: "POST",
-        url: "https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors.json",
-        data: JSON.stringify(object),
-        success : response => {
-            console.log(response)
-        },
-        error : error => {
-            console.log(error)
-        },
-        async:false,
-    })
-}
+  $.ajax({
+    method: "POST",
+    url: "https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors.json",
+    data: JSON.stringify(object),
+    success: (response) => {
+      console.log(response);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+    async: false,
+  });
+};
 
+const updateData = (key) => {
+  $.ajax({
+    method: "PATCH",
+    url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
+    data: JSON.stringify({ name: "testi" }),
+    success: (response) => {
+      console.log(response);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+  });
+};
 
-
-const updateData = key => {
-    $.ajax({
-        method:"PATCH",
-        url:`https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
-        data: JSON.stringify({ name:"testi"}),
-        success: response => {
-            console.log( response )
-        },
-        error: error => {
-            console.log( error )
-        }
-        
-    })
-}
-
-
-const putData = (key,obj)=> {
-    $.ajax({
-        method:"PUT",
-        url:`https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
-        data: JSON.stringify(obj),
-        success: response => {
-            console.log( response )
-        },
-        error: error => {
-            console.log( error )
-        },
-        async:false
-    })
-}
-
-
-
-
-// $('.btn-delete').each(function(){
-    
-// })
-
+const putData = (key, obj) => {
+  $.ajax({
+    method: "PUT",
+    url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
+    data: JSON.stringify(obj),
+    success: (response) => {
+      console.log(response);
+    },
+    error: (error) => {
+      console.log(error);
+    },
+    async: false,
+  });
+};
 
 const showForm = () => {
-    $('#show-form').hide()
-    $('form').show("slow")
-}
- 
-$('#show-form').click(showForm)
+  $("#show-form").hide();
+  $("form").show("slow");
+};
 
-$('#hide-form').click(()=> {
-    $('form').hide()
-    $('#show-form').show("slow")
-})
+$("#show-form").click(showForm);
 
-
-
-
-
+$("#hide-form").click(() => {
+  $("form").hide();
+  $("#show-form").show("slow");
+});
