@@ -1,4 +1,29 @@
 //"https://ajaxclass-1ca34.firebaseio.com/11g/drinktim.json"
+$('#change-user').click(() => {
+  $('#change-user-modal').modal("show")
+})
+let defaultUser = { name: "Israel", id: 007 };
+
+
+const selectUser = () => {
+  let id = 0;
+  let select = $('#users').val()
+  if(select == "Mels"){
+    id = 8
+  }else if(select == "Batman"){
+    id = 9
+  }else{
+    id = 10
+  }
+    defaultUser= {name : select, id}
+
+    $('#change-user-modal').modal("hide")
+
+  return defaultUser
+}
+
+$('#save-user-modal').click(selectUser)
+
 
 //--------------- NUEVO ---------------
 
@@ -31,7 +56,7 @@ const deleteReply = (key) => {
 };
 
 //----------- FIN NUEVO ------------
-let defaultUser = { name: "Israel", id: 007 };
+
 
 let postWrapper = $("#post-wrapper");
 

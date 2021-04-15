@@ -8,9 +8,41 @@
     <title>Social Network</title>
 </head>
 <body>
+  <div id="change-user-modal" class="modal" tabindex="-1" role="dialog">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Available Users</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="input-group mb-3">
+            <div class="input-group-prepend">
+              <label class="input-group-text" for="inputGroupSelect01">Users</label>
+            </div>
+            <select class="custom-select" id="users">
+              <option selected value="Isra">Isra</option>
+              <option value="Mels">Mels</option>
+              <option value="Batman">Batman</option>
+              <option value="Cat">a Cat</option>
+            </select>
+          </div>
+          
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" id="save-user-modal">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
   <nav class="navbar navbar-light bg-light">
     <p class="navbar-brand">Social Network</p>
     <div>
+      <button  id="change-user" class="btn">Change User</button>
       <img class="rounded-circle" style="height: 50px; width: 50px;" src="img/choppa.png" alt="user-img">
     </div>
   </nav>
@@ -47,6 +79,8 @@
 </div>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
