@@ -1,16 +1,5 @@
 //"https://ajaxclass-1ca34.firebaseio.com/11g/drinktim.json"
 
-/*
-const hideReplies = () => {
-  let firstChildGroup = $(".rw li:first-child");
-  let allLi = $(".rw li");
-  allLi.hide();
-  firstChildGroup.each(function () {
-    $(this).show();
-  });
-};
-*/
-
 //--------------- NUEVO ---------------
 
 const showComments = (event) => {
@@ -19,6 +8,12 @@ const showComments = (event) => {
     this.dataset.postId === idToSeeMore
       ? $(this).children().show()
       : $(this).children().hide() && $(this).children(":first").show();
+  });
+  //hide current showCommentButton
+  $(".btn-see-more").each(function () {
+    if (this.dataset.postIdToComment == idToSeeMore) {
+      $(this).hide();
+    }
   });
 };
 
