@@ -2,9 +2,9 @@ let cardsRow = $("#cards-c");
 
 $("form").hide();
 
-$("#alert-deleted").alert('close')
+$("#alert-deleted").alert("close");
 
-const setProduct = () => {
+const setMentor = () => {
   let newMentor = {};
   $('form input[type="text"]').each(function () {
     newMentor[this.name] = this.value;
@@ -24,7 +24,7 @@ const setProduct = () => {
   $("#modal-save").modal("show");
 };
 
-$("#save").click(() => setProduct());
+$("#save").click(() => setMentor());
 
 const getData = () => {
   let mentorsCollections;
@@ -33,18 +33,12 @@ const getData = () => {
     url: "https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors.json",
     success: (response) => {
       mentorsCollections = response;
-      console.log(response);
     },
     error: (error) => {
       console.log(error);
     },
     async: false,
   });
-  return mentorsCollections;
-};
-const getKey = (event) => {
-  let key = event.target.dataset.mentorKey;
-
   return mentorsCollections;
 };
 
@@ -70,11 +64,10 @@ const getDataByKey = (event) => {
     method: "GET",
     url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
     success: (response) => {
-      console.log(response);
       mentorObj = response;
     },
     error: (error) => {
-      console.log(error, "ERRRRRO");
+      console.log(error);
     },
     async: false,
   });
@@ -101,7 +94,6 @@ const getDataByKey = (event) => {
 
   $("#save-edit").click(saveEdit);
 
-  return key;
 };
 
 const deleteData = (event) => {
@@ -117,12 +109,14 @@ const deleteData = (event) => {
     async: false,
   });
   $("#modal-delete").modal("show");
-  $('#alert-deleted').alert()
+  $("#alert-deleted").alert();
   printMentors(getData());
 };
 
 const printMentors = (arr) => {
   cardsRow.children().remove();
+
+  let editIcon = '<i class="bi bi-pencil-square"></i>';
 
   for (key in arr) {
     let { name, age, phone } = arr[key];
@@ -130,7 +124,7 @@ const printMentors = (arr) => {
     let card = `<div class="col-12 col-md-4 col-lg-3"><div class="card mb-4 shadow-sm">
     <div class="card-body">
         <div class="card-title d-flex justify-content-between w-100 align-items-center">${name} 
-        <button data-mentor-key="${key}" class="btn btn-warning btn-edit">Edit</button>
+        <button data-mentor-key="${key}" class="btn btn-warning btn-edit">${editIcon}</button>
         </div> 
         <div class="card-text">${age}</div>
         <div class="card-text">${phone}</div>
@@ -143,8 +137,6 @@ const printMentors = (arr) => {
   $(".btn-delete").click(deleteData);
 
   $(".btn-edit").click(getDataByKey);
-
-  console.log();
 };
 
 printMentors(getData());
@@ -155,26 +147,11 @@ const saveData = (object) => {
     url: "https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors.json",
     data: JSON.stringify(object),
     success: (response) => {
-      console.log(response);
     },
     error: (error) => {
       console.log(error);
     },
     async: false,
-  });
-};
-
-const updateData = (key) => {
-  $.ajax({
-    method: "PATCH",
-    url: `https://ajaxclass-1ca34.firebaseio.com/11g/angel/mentors/${key}.json`,
-    data: JSON.stringify({ name: "testi" }),
-    success: (response) => {
-      console.log(response);
-    },
-    error: (error) => {
-      console.log(error);
-    },
   });
 };
 
@@ -201,9 +178,13 @@ const showForm = () => {
 $("#show-form").click(showForm);
 
 $("#hide-form").click(() => {
-    $("form").hide();
+  $("form").hide();
   $("#show-form").show("slow");
   $('form input[type="text"]').each(function () {
     this.value = "";
   });
 });
+
+
+
+const dof
