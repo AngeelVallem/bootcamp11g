@@ -212,7 +212,7 @@ const printPost = (data) => {
  </div>
          `;
 
-    postWrapper.append(post);
+    postWrapper.prepend(post);
   }
   $(".btn-comment").click(addComment);
 };
