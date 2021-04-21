@@ -1,6 +1,7 @@
 let cOwner;
 
 const printAdoptedPets  = (pets) => {
+  $("data-container").remove()
     let petsContainer = $('#adopted-pets');
     petsContainer.children().remove()
 
@@ -48,8 +49,10 @@ const printAdoptedPets  = (pets) => {
 
     }
     printAdoptedPets(newObject)
-    
+
 }
+
+
 
 printAdoptedPets(getPets())
 

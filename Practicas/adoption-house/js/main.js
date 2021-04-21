@@ -3,7 +3,7 @@
 
 
 $("#owners-table").click(() => {
-  $("#data-container").load("../views/owners.html");
+  $(".container").load("../views/owners.html");
 });
 
 $("#add-pet").click(() => {
@@ -100,10 +100,11 @@ const getPets = () => {
 
 const printPets  = (pets) => {
     let petsContainer = $('#data-container');
-let msg = `<div class="col-12">
-<small class="text-muted mx-auto">Cambia de usuario o crea uno nuevo para empezar a adoptar</small>
-</div>`
+ let msg = `<div class="col-12">
+ <small class="text-muted mx-auto">Cambia de usuario o crea uno nuevo para empezar a adoptar</small>
+ </div>`
 
+ 
     petsContainer.children().remove()
 
     petsContainer.append(msg)
