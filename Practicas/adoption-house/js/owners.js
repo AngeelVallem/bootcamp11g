@@ -1,11 +1,8 @@
 let cOwner;
 
-
-
 const printAdoptedPets  = (pets) => {
     let petsContainer = $('#adopted-pets');
     petsContainer.children().remove()
-
 
     for ( key in pets) {
       let {petName,petImg,type,description,adopted,owner} = pets[key]
