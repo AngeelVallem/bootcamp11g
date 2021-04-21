@@ -1,0 +1,49 @@
+<div class="col-8 mx-auto pt-3">
+  <div class="card p-3">
+    <form id="pet-form">
+      <div class="form-group">
+        <label for="exampleInputEmail1">Nombre de la mascota</label>
+        <input
+          type="text"
+          name="petName"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="e.g. panchito"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">Descripcion de la mascota</label>
+        <input
+          type="text"
+          name="description"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="e.g. Es muy obediente"
+        />
+      </div>
+      <div class="form-group">
+        <label for="exampleInputEmail1">URL</label>
+        <input
+          type="text"
+          name="petImg"
+          class="form-control"
+          aria-describedby="emailHelp"
+          placeholder="some URL"
+        />
+      </div>
+   
+      <label for="exampleInputEmail1">Tipo de mascota</label>
+      <select id="select-type" class="custom-select">
+        <option value="gato" selected>Gato</option>
+        <option value="perro">Perro</option>
+
+      </select>
+            
+
+      <button id="save-pet" type="button" class="btn btn-primary mt-4">Guardar mascota</button>
+    </form>
+  </div>
+</div>
+
+
+<script src="../js/petsForm.js"></script>

@@ -5,7 +5,10 @@ $('#change-user').click(() => {
 let defaultUser = { name: "Israel", id: 007 };
 
 
+ let userImg = $('nav img');
 const selectUser = () => {
+
+
   let id = 0;
   let select = $('#users').val()
   if(select == "Mels"){
@@ -18,6 +21,14 @@ const selectUser = () => {
     defaultUser= {name : select, id}
 
     $('#change-user-modal').modal("hide")
+
+if(defaultUser.name == "Mels"){
+  userImg.attr("src","https://i.pinimg.com/originals/1a/59/25/1a592590ea818b1622b7d9e901b9d44c.jpg")
+}else if(defaultUser.name == "Batman"){
+  userImg.attr("src","https://i.pinimg.com/originals/24/5a/e1/245ae17922e87954167a22bb77addf89.jpg")
+}else{
+  userImg.attr("src","https://i.pinimg.com/originals/8c/ab/4e/8cab4e46f19b1c4ae0ed8ff6c5115e7d.jpg")
+}
 
   return defaultUser
 }
@@ -172,7 +183,7 @@ const printReplies = (repliesCollection) => {
           <li class="list-group-item">
               <div class="reply-box">
                 <div class="d-flex align-items-center">
-                  <img class="rounded-circle mr-2" style="height: 40px; width: 40px;" src="img/choppa.png" alt="user-img">
+                  <img class="rounded-circle mr-2" style="height: 40px; width: 40px;" src=${userImg.attr("src")} alt="user-img">
                   <h3 class="font-weight-bold"><span>${author}</span></h3>
                 </div>
                   <p class="mt-3 font-italic" >${content}</p>
@@ -283,3 +294,8 @@ repliesWrapper.each(function () {
 $(".btn-see-more").click(showComments);
 
 //--------- FIN NUEVO -------
+
+
+
+console.log("Hola desde vim")
+

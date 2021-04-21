@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css" integrity="sha384-B0vP5xmATw1+K9KRQjQERJvTumQW0nPEzvF6L/Z6nronJ3oUOFUFpCjEUQouq2+l" crossorigin="anonymous">
+    <title>Adoption House</title>
+</head>
+<body>
+
+    <div id="change-owner" class="modal" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title">Available Owners</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <label class="input-group-text" for="inputGroupSelect01"></label>
+                </div>
+                <select class="custom-select owners">
+                </select>
+              </div>
+              
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" id="save-owner-modal">Save</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    
+
+
+    <nav class="navbar navbar-light shadow-lg">
+        <a class="navbar-brand" href="index.html">
+          <img src="https://i.pinimg.com/736x/cc/c9/0b/ccc90bf62b90523a9727a0e737c526f6.jpg" width="30" height="30" class="d-inline-block align-top" alt="">
+          Adoption house
+        </a>
+
+        <div>
+            <button class="btn" id="c-owner">
+    
+            </button>
+            
+            <img style="width: 50px; height: 50px;"
+            id="img-avatar"
+             class="rounded-circle"
+             alt="avatar">
+
+        </div>    
+
+        <div>
+            <button id="owners-table" class="btn">
+               Dueños
+            </button>
+            <button id="add-pet" class="btn">
+                Añadir Mascota
+            </button>
+            <button id="add-owner" class="btn">
+                Añadir dueño
+            </button>
+        </div>
+       
+      </nav>
+
+      
+      <section  class="container">
+       
+
+        
+          <div id ="data-container" class="row">
+          </div>
+      </section>
+
+
+      <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+
+      <script src="js/main.js"></script>
+</body>
+</html>
