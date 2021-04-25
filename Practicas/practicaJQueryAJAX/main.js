@@ -185,5 +185,7 @@ $("#hide-form").click(() => {
   });
 });
 
+console.log(cardsRow)
+
 
 

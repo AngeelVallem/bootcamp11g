@@ -151,8 +151,7 @@ const patchData = (event) => {
     method: "PATCH",
     url: `https://collections-test-x-default-rtdb.firebaseio.com/Projects/adopHouse/pets/${key}.json`,
     data: JSON.stringify({idOwner:currentOwner.idOwner , adopted:true, owner :currentOwner.name }),
-    success: (response) => {
-    },
+    success: () => printPets(getPets()),
     error: (error) => {
       console.log(error);
     },
@@ -163,9 +162,6 @@ const patchData = (event) => {
 
 $('.btn-adop').each(function() {
   $(this).click(patchData)
-  $(this).click(() =>{
-    printPets(getPets())
-  })
 })
 
 
